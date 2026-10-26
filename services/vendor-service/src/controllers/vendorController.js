@@ -119,6 +119,15 @@ export async function handleInternalGetByUserId(req, res, next) {
   }
 }
 
+export async function handleInternalGetById(req, res, next) {
+  try {
+    const vendor = await vendorService.getVendorById(req.params.id, { role: 'admin' });
+    return sendSuccess(res, vendor, 200);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function handleInternalStats(req, res, next) {
   try {
     const stats = await vendorService.getStats();

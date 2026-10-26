@@ -22,11 +22,9 @@ export function createGatewayRouter() {
             proxyReq.setHeader('x-correlation-id', req.correlationId);
           }
           if (req.user) {
-            proxyReq.setHeader('x-user-id', req.user.id);
-            proxyReq.setHeader('x-user-role', req.user.role);
-            if (req.user.email) {
-              proxyReq.setHeader('x-user-email', req.user.email);
-            }
+            if (req.user.id) proxyReq.setHeader('x-user-id', String(req.user.id));
+            if (req.user.role) proxyReq.setHeader('x-user-role', String(req.user.role));
+            if (req.user.email) proxyReq.setHeader('x-user-email', String(req.user.email));
           }
         },
         error: (err, req, res) => {
