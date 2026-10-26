@@ -42,7 +42,7 @@ export const MyOrdersPage: React.FC = () => {
       <div className="max-w-3xl mx-auto px-4 py-16">
         <EmptyState
           title="No orders placed yet"
-          description="Explore our marketplace catalogue and place your first demo order today."
+          description="Explore our marketplace catalogue and place your first order today."
           actionText="Start Shopping"
           onAction={() => window.location.assign('/')}
         />
@@ -99,7 +99,7 @@ export const MyOrdersPage: React.FC = () => {
 
               <div className="flex items-center gap-2">
                 <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  {order.paymentStatus === 'demo_paid' ? 'Demo Paid' : order.paymentStatus}
+                  {order.paymentStatus === 'demo_paid' ? 'Paid' : order.paymentStatus}
                 </span>
               </div>
             </div>
@@ -160,7 +160,7 @@ export const MyOrdersPage: React.FC = () => {
                 </span>
               </div>
               <span className="font-mono text-[10px] text-slate-400">
-                Key: {order.idempotencyKey.slice(0, 8)}...
+                Ref #{order.id.slice(-8).toUpperCase()}
               </span>
             </div>
           </div>

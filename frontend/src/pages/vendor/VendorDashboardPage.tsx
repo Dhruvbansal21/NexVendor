@@ -66,7 +66,7 @@ export const VendorDashboardPage: React.FC = () => {
           <StatCard
             title="Total Revenue"
             value={formatPrice(dashboard?.totalSalesPaise || 0)}
-            subtitle="Calculated server-side"
+            subtitle="Gross merchant earnings"
             color="brand"
             icon={<IndianRupee className="w-5 h-5" />}
           />

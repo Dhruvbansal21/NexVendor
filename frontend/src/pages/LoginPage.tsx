@@ -107,7 +107,7 @@ export const LoginPage: React.FC = () => {
         {/* Demo Accounts Quick-Fill Pill Buttons */}
         <div className="mt-8 pt-6 border-t border-slate-100">
           <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 text-center mb-3">
-            Quick Fill Demo Accounts
+            Quick Access Test Profiles
           </p>
           <div className="grid grid-cols-3 gap-2">
             <button

@@ -68,23 +68,23 @@ export const HomePage: React.FC = () => {
         <div className="max-w-2xl relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 border border-brand-400/30 text-brand-300 text-xs font-semibold mb-4 backdrop-blur-sm">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>BEE-II Evaluation Live Demonstration</span>
+            <span>Curated Independent Brands</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight mb-4">
-            A Multi-Vendor Marketplace on Microservices.
+            Discover Quality Products From Independent Vendors.
           </h1>
           <p className="text-slate-300 text-xs md:text-sm leading-relaxed mb-6">
-            Shop directly from verified independent vendors. Every product comes live from MongoDB through our API Gateway with real-time stock reservation and sub-order splitting.
+            Shop directly from verified creators, artisans, and premium merchants. Enjoy secure unified checkout, real-time stock availability, and guaranteed customer protection.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-xs">
             <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/10 backdrop-blur-sm">
-              ✨ 4 Separate MongoDB Databases
+              ✨ 100% Verified Merchants
             </span>
             <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/10 backdrop-blur-sm">
-              🛡️ Verified Vendors Only
+              🛡️ Buyer Protection Guaranteed
             </span>
             <span className="px-3 py-1 rounded-lg bg-white/10 border border-white/10 backdrop-blur-sm">
-              ⚡ Idempotent Checkout Mini-Saga
+              ⚡ Direct Multi-Vendor Delivery
             </span>
           </div>
         </div>

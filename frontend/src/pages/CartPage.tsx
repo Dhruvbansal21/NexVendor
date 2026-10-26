@@ -13,7 +13,7 @@ export const CartPage: React.FC = () => {
 
   const subtotalPaise = items.reduce((acc, i) => acc + i.unitPrice * i.qty, 0);
 
-  // Group items by vendor storeName for evaluation visual demonstration
+  // Group items by vendor storeName for dedicated vendor order packages
   const stores = Array.from(new Set(items.map((i) => i.storeName)));
 
   if (items.length === 0) {
@@ -155,11 +155,11 @@ export const CartPage: React.FC = () => {
               </div>
               <div className="flex justify-between text-slate-600">
                 <span>Estimated Shipping</span>
-                <span className="font-semibold text-emerald-600">Free (Evaluation)</span>
+                <span className="font-semibold text-emerald-600">Free</span>
               </div>
               <div className="flex justify-between text-slate-600">
-                <span>Sub-Orders Created</span>
-                <span className="font-semibold text-slate-900">{stores.length} sub-orders</span>
+                <span>Vendors in Order</span>
+                <span className="font-semibold text-slate-900">{stores.length} store{stores.length === 1 ? '' : 's'}</span>
               </div>
               <div className="pt-3 border-t border-slate-100 flex justify-between text-sm font-extrabold text-slate-900">
                 <span>Total Amount</span>
@@ -171,12 +171,12 @@ export const CartPage: React.FC = () => {
               onClick={() => navigate('/checkout')}
               className="w-full py-3 px-4 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 active:scale-95 transition shadow-sm flex items-center justify-center gap-2"
             >
-              <span>Proceed to Demo Checkout</span>
+              <span>Proceed to Checkout</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
             <p className="mt-4 text-[11px] text-slate-400 text-center leading-relaxed">
-              Sub-orders will be created atomically for each vendor with compensating rollback support.
+              Items from multiple merchants are processed and shipped securely in dedicated packages.
             </p>
           </div>
         </div>

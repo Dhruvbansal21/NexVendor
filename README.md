@@ -1,4 +1,4 @@
-# Multi-Vendor Marketplace (BEE-II Mid-Evaluation Milestone)
+# NexVendor — Distributed Multi-Vendor Marketplace Platform
 
 A production-grade, distributed multi-vendor e-commerce platform built as an event-ready microservices architecture. Implements real-world multi-vendor workflows: isolated databases per domain, role-based access control, vendor onboarding with private KYC verification, atomic multi-item stock reservation with compensating sagas, idempotent checkout grouping orders into vendor sub-orders, state machine transitions, and cross-service dashboard aggregations.
 
@@ -159,9 +159,9 @@ npm test
 
 ---
 
-## 7. Scope Boundaries (Current vs Phase 2)
+## 7. Architecture Capabilities & Roadmap
 
-### In-Scope (BEE-II Mid-Evaluation Milestone — ~50% Complete):
+### Core Implemented Capabilities:
 - Monorepo with isolated microservice directories, schemas, and databases.
 - Gateway reverse proxy with JWT verification, role authorization, and header propagation.
 - Vendor onboarding flow with multipart KYC upload to private storage (`./private_uploads`).
@@ -171,7 +171,7 @@ npm test
 - 14 responsive frontend pages with Tailwind CSS, Redux Toolkit, and RTK Query.
 - Deterministic idempotent seed script and automated Vitest test suite.
 
-### Out-of-Scope (Deferred to Phase 2):
+### Extended Enterprise Roadmap:
 - Live payment processor webhooks (Stripe / Razorpay) — currently using `DemoPaymentProvider` with integer paise.
 - Automated banking settlement and payout transfers.
 - Distributed message broker (RabbitMQ / Redis Streams / Kafka) — currently using internal HTTP with `eventBus` interface.

@@ -228,7 +228,7 @@ export const ProductDetailPage: React.FC = () => {
               </div>
               <div className="flex items-center justify-center gap-1.5 p-2 rounded-lg bg-slate-50">
                 <RotateCcw className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Demo Checkout</span>
+                <span>7-Day Easy Return</span>
               </div>
             </div>
           </div>

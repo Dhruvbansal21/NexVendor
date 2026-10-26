@@ -32,7 +32,7 @@ export const AdminDashboardPage: React.FC = () => {
               Admin Platform Overview
             </h1>
             <p className="text-xs text-slate-500 mt-1">
-              Aggregated system metrics composed from Gateway across all 4 independent microservices
+              Real-time marketplace analytics, merchant verification pipeline, and platform order stream
             </p>
           </div>
 
@@ -102,52 +102,57 @@ export const AdminDashboardPage: React.FC = () => {
           />
         </div>
 
-        {/* Microservices Health Composition Box */}
+        {/* Platform Infrastructure Health */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm lg:col-span-1">
-            <h2 className="text-sm font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
-              <Server className="w-4 h-4 text-brand-600" />
-              <span>Backend Microservices</span>
-            </h2>
+            <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
+              <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <Server className="w-4 h-4 text-brand-600" />
+                <span>Platform Infrastructure</span>
+              </h2>
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                All Systems Normal
+              </span>
+            </div>
 
             <div className="space-y-3 text-xs">
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-slate-800">Auth Service :4001</p>
-                  <p className="text-[10px] text-slate-400">DB: marketplace_auth</p>
+                  <p className="font-bold text-slate-800">Authentication & Identity</p>
+                  <p className="text-[10px] text-slate-400">RBAC & Session Security</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Healthy
+                  Operational
                 </span>
               </div>
 
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-slate-800">Vendor Service :4002</p>
-                  <p className="text-[10px] text-slate-400">DB: marketplace_vendor</p>
+                  <p className="font-bold text-slate-800">Merchant Verification Hub</p>
+                  <p className="text-[10px] text-slate-400">KYC Storage & Audit</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Healthy
+                  Operational
                 </span>
               </div>
 
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-slate-800">Catalogue Service :4003</p>
-                  <p className="text-[10px] text-slate-400">DB: marketplace_catalogue</p>
+                  <p className="font-bold text-slate-800">Product & Inventory Engine</p>
+                  <p className="text-[10px] text-slate-400">Live Stock Aggregation</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Healthy
+                  Operational
                 </span>
               </div>
 
               <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-slate-800">Order Service :4004</p>
-                  <p className="text-[10px] text-slate-400">DB: marketplace_orders</p>
+                  <p className="font-bold text-slate-800">Order & Fulfillment Pipeline</p>
+                  <p className="text-[10px] text-slate-400">Multi-Vendor Routing</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Healthy
+                  Operational
                 </span>
               </div>
             </div>

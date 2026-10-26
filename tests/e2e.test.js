@@ -71,7 +71,7 @@ beforeAll(async () => {
   vendor3Token = v3Res.body?.data?.token;
 });
 
-describe('BEE-II Verification Test Suite (T1 - T18)', () => {
+describe('Core Verification Test Suite (T1 - T18)', () => {
 
   test('T1: Register with role: admin is rejected (400/403)', async () => {
     const res = await api('/api/auth/register', {
