@@ -23,9 +23,14 @@ catalogueRouter.use(extractUserFromHeaders);
 catalogueRouter.get('/products', handleGetProducts);
 catalogueRouter.get('/categories', handleGetCategories);
 catalogueRouter.get('/products/:id', handleGetProductById);
+catalogueRouter.get('/:id', handleGetProductById);
+catalogueRouter.get('/', handleGetProducts);
 
 // Vendor-protected routes
 catalogueRouter.get('/my-products', requireRole('vendor'), handleGetMyProducts);
 catalogueRouter.post('/products', requireRole('vendor'), validateBody(createProductSchema), handleCreateProduct);
+catalogueRouter.post('/', requireRole('vendor'), validateBody(createProductSchema), handleCreateProduct);
 catalogueRouter.patch('/products/:id', requireRole('vendor'), validateBody(updateProductSchema), handleUpdateProduct);
+catalogueRouter.patch('/:id', requireRole('vendor'), validateBody(updateProductSchema), handleUpdateProduct);
 catalogueRouter.delete('/products/:id', requireRole('vendor'), handleDeleteProduct);
+catalogueRouter.delete('/:id', requireRole('vendor'), handleDeleteProduct);

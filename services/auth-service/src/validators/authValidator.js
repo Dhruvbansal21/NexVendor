@@ -17,6 +17,9 @@ export const loginSchema = z.object({
 
 export function validateBody(schema) {
   return (req, res, next) => {
+    if (req.body?.role === 'admin') {
+      return next(badRequest('Admin self-registration is strictly prohibited', [], 'CANNOT_REGISTER_AS_ADMIN'));
+    }
     const result = schema.safeParse(req.body);
     if (!result.success) {
       const details = result.error.errors.map(e => ({

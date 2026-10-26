@@ -20,6 +20,7 @@ export function createApp() {
   });
 
   app.use('/api/catalogue', catalogueRouter);
+  app.use('/api/products', catalogueRouter);
   app.use('/internal', internalRouter);
 
   app.use((req, res, next) => {

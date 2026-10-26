@@ -92,8 +92,8 @@ const subOrderSchema = new mongoose.Schema(
     toJSON: {
       transform: (doc, ret) => {
         ret.id = ret._id.toString();
+        ret._id = ret.id;
         ret.vendorId = ret.vendorId ? ret.vendorId.toString() : ret.vendorId;
-        delete ret._id;
         return ret;
       }
     }
@@ -152,8 +152,8 @@ const orderSchema = new mongoose.Schema(
     toJSON: {
       transform: (doc, ret) => {
         ret.id = ret._id.toString();
+        ret._id = ret.id;
         ret.customerId = ret.customerId ? ret.customerId.toString() : ret.customerId;
-        delete ret._id;
         delete ret.__v;
         return ret;
       }

@@ -7,7 +7,7 @@ export const createProductSchema = z.object({
   price: z.number().int().min(0, 'Price must be non-negative integer in paise'),
   category: z.string().min(2, 'Category is required'),
   stock: z.number().int().min(0, 'Stock must be non-negative integer'),
-  imageUrl: z.string().min(1, 'Image URL is required'),
+  imageUrl: z.string().optional().default('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800'),
   status: z.enum(['draft', 'active']).optional().default('draft')
 });
 

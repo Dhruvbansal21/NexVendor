@@ -62,7 +62,7 @@ export function createGatewayRouter() {
 
   // 2. CRITICAL SPEC RULE: /api/vendors/me/orders must be declared BEFORE /api/vendors/*
   router.use(
-    '/api/vendors/me/orders',
+    ['/api/vendors/me/orders', '/api/vendors/orders'],
     authenticateGateway({ required: true }),
     authorizeRole('vendor'),
     ordersProxy
@@ -93,9 +93,9 @@ export function createGatewayRouter() {
     vendorProxy
   );
 
-  // /api/vendors/:id/kyc/:docId -> admin or vendor
+  // /api/vendors/:id/kyc -> admin or vendor
   router.use(
-    '/api/vendors/:id/kyc/:docId',
+    '/api/vendors/:id/kyc',
     authenticateGateway({ required: true }),
     authorizeRole('admin', 'vendor'),
     vendorProxy
@@ -124,17 +124,20 @@ export function createGatewayRouter() {
     catalogueProxy
   );
 
-  // /api/catalogue/products POST/PATCH/DELETE -> role: vendor
-  router.use('/api/catalogue/products', (req, res, next) => {
+  // /api/catalogue/products & /api/products POST/PATCH/DELETE -> role: vendor
+  const handleProductRole = (req, res, next) => {
     if (req.method === 'POST' || req.method === 'PATCH' || req.method === 'DELETE') {
       return authenticateGateway({ required: true })(req, res, () => {
         authorizeRole('vendor')(req, res, next);
       });
     }
     next();
-  }, catalogueProxy);
+  };
 
-  // Remaining catalogue routes (GET /api/catalogue/products/:id, GET /api/catalogue/categories, etc.)
+  router.use('/api/catalogue/products', handleProductRole, catalogueProxy);
+  router.use('/api/products', handleProductRole, catalogueProxy);
+
+  // Remaining catalogue routes (GET /api/catalogue/categories, etc.)
   router.use('/api/catalogue', catalogueProxy);
 
   // 6. Order routes

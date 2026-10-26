@@ -22,6 +22,7 @@ vendorRouter.get('/me', handleGetMe);
 
 // Stream private KYC document
 vendorRouter.get('/:id/kyc/:docId', handleStreamKycDoc);
+vendorRouter.get('/:id/kyc', handleStreamKycDoc);
 
 // Public / filtered list of vendors
 vendorRouter.get('/', handleGetVendors);
