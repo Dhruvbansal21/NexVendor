@@ -6,15 +6,16 @@ import { logger, forbidden, badRequest } from '@marketplace/shared';
 export function createGatewayRouter() {
   const router = Router();
 
-  const AUTH_URL = process.env.AUTH_URL || 'http://localhost:4001';
-  const VENDOR_URL = process.env.VENDOR_URL || 'http://localhost:4002';
-  const CATALOGUE_URL = process.env.CATALOGUE_URL || 'http://localhost:4003';
-  const ORDERS_URL = process.env.ORDERS_URL || 'http://localhost:4004';
+  const AUTH_URL = process.env.AUTH_URL || 'http://127.0.0.1:4001';
+  const VENDOR_URL = process.env.VENDOR_URL || 'http://127.0.0.1:4002';
+  const CATALOGUE_URL = process.env.CATALOGUE_URL || 'http://127.0.0.1:4003';
+  const ORDERS_URL = process.env.ORDERS_URL || 'http://127.0.0.1:4004';
 
   function makeProxy(target) {
     return createProxyMiddleware({
       target,
       changeOrigin: true,
+      pathRewrite: (path, req) => req.originalUrl,
       on: {
         proxyReq: (proxyReq, req) => {
           if (req.correlationId) {
