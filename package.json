@@ -1,0 +1,23 @@
+{
+  "name": "marketplace-root",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:all": "concurrently -n \"gw,auth,vendor,cat,order,front\" -c \"cyan,blue,magenta,green,yellow,red\" \"npm run dev -w services/gateway\" \"npm run dev -w services/auth-service\" \"npm run dev -w services/vendor-service\" \"npm run dev -w services/catalogue-service\" \"npm run dev -w services/order-service\" \"npm run dev -w frontend\"",
+    "dev:backend": "concurrently -n \"gw,auth,vendor,cat,order\" -c \"cyan,blue,magenta,green,yellow\" \"npm run dev -w services/gateway\" \"npm run dev -w services/auth-service\" \"npm run dev -w services/vendor-service\" \"npm run dev -w services/catalogue-service\" \"npm run dev -w services/order-service\"",
+    "seed": "node scripts/seed.js",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "dotenv": "^16.4.7",
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.8"
+  }
+}
