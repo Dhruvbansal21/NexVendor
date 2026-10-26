@@ -11,7 +11,7 @@ export function createApp() {
 
   app.use(helmet());
   app.use(cors({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    origin: (origin, callback) => callback(null, true),
     credentials: true,
     exposedHeaders: ['x-correlation-id', 'Idempotent-Replay']
   }));
