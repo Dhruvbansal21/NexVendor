@@ -2,6 +2,7 @@ import { describe, test, expect, beforeAll } from 'vitest';
 import mongoose from 'mongoose';
 import { execSync } from 'child_process';
 import crypto from 'crypto';
+import { getMongoUri, getMongoOptions } from '@marketplace/shared';
 
 const GATEWAY_URL = 'http://127.0.0.1:4000';
 const DEMO_PASSWORD = process.env.SEED_DEMO_PASSWORD || 'Demo@12345';
@@ -424,10 +425,10 @@ describe('Core Verification Test Suite (T1 - T18)', () => {
     const summary = dashRes.body.data.summary;
 
     // Connect to Mongo directly to verify truth
-    const authConn = await mongoose.createConnection('mongodb://127.0.0.1:27017/marketplace_auth').asPromise();
-    const vendorConn = await mongoose.createConnection('mongodb://127.0.0.1:27017/marketplace_vendor').asPromise();
-    const catConn = await mongoose.createConnection('mongodb://127.0.0.1:27017/marketplace_catalogue').asPromise();
-    const orderConn = await mongoose.createConnection('mongodb://127.0.0.1:27017/marketplace_orders').asPromise();
+    const authConn = await mongoose.createConnection(getMongoUri('MONGO_URI_AUTH', 'marketplace_auth'), getMongoOptions()).asPromise();
+    const vendorConn = await mongoose.createConnection(getMongoUri('MONGO_URI_VENDOR', 'marketplace_vendor'), getMongoOptions()).asPromise();
+    const catConn = await mongoose.createConnection(getMongoUri('MONGO_URI_CATALOGUE', 'marketplace_catalogue'), getMongoOptions()).asPromise();
+    const orderConn = await mongoose.createConnection(getMongoUri('MONGO_URI_ORDERS', 'marketplace_orders'), getMongoOptions()).asPromise();
 
     const dbUsers = await authConn.collection('users').countDocuments();
     const dbVendors = await vendorConn.collection('vendors').countDocuments();
@@ -450,10 +451,10 @@ describe('Core Verification Test Suite (T1 - T18)', () => {
     execSync('node scripts/seed.js', { stdio: 'pipe' });
     execSync('node scripts/seed.js', { stdio: 'pipe' });
 
-    const authConn = await mongoose.createConnection('mongodb://127.0.0.1:27017/marketplace_auth').asPromise();
-    const vendorConn = await mongoose.createConnection('mongodb://127.0.0.1:27017/marketplace_vendor').asPromise();
-    const catConn = await mongoose.createConnection('mongodb://127.0.0.1:27017/marketplace_catalogue').asPromise();
-    const orderConn = await mongoose.createConnection('mongodb://127.0.0.1:27017/marketplace_orders').asPromise();
+    const authConn = await mongoose.createConnection(getMongoUri('MONGO_URI_AUTH', 'marketplace_auth'), getMongoOptions()).asPromise();
+    const vendorConn = await mongoose.createConnection(getMongoUri('MONGO_URI_VENDOR', 'marketplace_vendor'), getMongoOptions()).asPromise();
+    const catConn = await mongoose.createConnection(getMongoUri('MONGO_URI_CATALOGUE', 'marketplace_catalogue'), getMongoOptions()).asPromise();
+    const orderConn = await mongoose.createConnection(getMongoUri('MONGO_URI_ORDERS', 'marketplace_orders'), getMongoOptions()).asPromise();
 
     const users = await authConn.collection('users').find({}).toArray();
     const emails = users.map(u => u.email);

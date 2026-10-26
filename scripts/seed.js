@@ -4,20 +4,31 @@ import dotenv from 'dotenv';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { getMongoUri, sanitizeMongoUri, getMongoOptions } from '@marketplace/shared';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 const DEMO_PASSWORD = process.env.SEED_DEMO_PASSWORD || 'Demo@12345';
-const MONGO_BASE = 'mongodb://127.0.0.1:27017';
 
 async function seed() {
   console.log('--- Starting Idempotent Database Seed ---');
   console.log('Connecting to microservice databases...');
 
-  const connAuth = await mongoose.createConnection(`${MONGO_BASE}/marketplace_auth`).asPromise();
-  const connVendor = await mongoose.createConnection(`${MONGO_BASE}/marketplace_vendor`).asPromise();
-  const connCat = await mongoose.createConnection(`${MONGO_BASE}/marketplace_catalogue`).asPromise();
-  const connOrders = await mongoose.createConnection(`${MONGO_BASE}/marketplace_orders`).asPromise();
+  const uriAuth = getMongoUri('MONGO_URI_AUTH', 'marketplace_auth');
+  const uriVendor = getMongoUri('MONGO_URI_VENDOR', 'marketplace_vendor');
+  const uriCat = getMongoUri('MONGO_URI_CATALOGUE', 'marketplace_catalogue');
+  const uriOrders = getMongoUri('MONGO_URI_ORDERS', 'marketplace_orders');
+
+  console.log(`- Auth DB: ${sanitizeMongoUri(uriAuth)}`);
+  console.log(`- Vendor DB: ${sanitizeMongoUri(uriVendor)}`);
+  console.log(`- Catalogue DB: ${sanitizeMongoUri(uriCat)}`);
+  console.log(`- Orders DB: ${sanitizeMongoUri(uriOrders)}`);
+
+  const connAuth = await mongoose.createConnection(uriAuth, getMongoOptions()).asPromise();
+  const connVendor = await mongoose.createConnection(uriVendor, getMongoOptions()).asPromise();
+  const connCat = await mongoose.createConnection(uriCat, getMongoOptions()).asPromise();
+  const connOrders = await mongoose.createConnection(uriOrders, getMongoOptions()).asPromise();
 
   const passwordHash = await bcrypt.hash(DEMO_PASSWORD, 10);
 

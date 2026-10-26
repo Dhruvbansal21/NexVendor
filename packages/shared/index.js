@@ -7,3 +7,4 @@ export * from './requireRole.js';
 export * from './internalOnly.js';
 export * from './internalClient.js';
 export * from './eventBus.js';
+export * from './db.js';
