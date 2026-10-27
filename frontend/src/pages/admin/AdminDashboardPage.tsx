@@ -105,49 +105,54 @@ export const AdminDashboardPage: React.FC = () => {
         {/* Service health panel */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-3xl border border-stone-200/80 p-6 shadow-sm lg:col-span-1">
-            <h2 className="text-sm font-bold text-stone-900 mb-4 pb-2 border-b border-stone-100 flex items-center gap-2">
-              <Server className="w-4 h-4 text-brand-600" />
-              <span>System health</span>
-            </h2>
+            <div className="flex items-center justify-between mb-4 pb-2 border-b border-stone-100">
+              <h2 className="text-sm font-bold text-stone-900 flex items-center gap-2">
+                <Server className="w-4 h-4 text-brand-600" />
+                <span>System health</span>
+              </h2>
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                All systems normal
+              </span>
+            </div>
 
             <div className="space-y-3 text-xs">
               <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-stone-800">Auth Service :4001</p>
-                  <p className="text-[10px] text-stone-400">DB: marketplace_auth</p>
+                  <p className="font-bold text-stone-800">Accounts & access</p>
+                  <p className="text-[10px] text-stone-400">Sign-in and role permissions</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Healthy
+                  Operational
                 </span>
               </div>
 
               <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-stone-800">Vendor Service :4002</p>
-                  <p className="text-[10px] text-stone-400">DB: marketplace_vendor</p>
+                  <p className="font-bold text-stone-800">Store verification</p>
+                  <p className="text-[10px] text-stone-400">Seller documents and approvals</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Healthy
+                  Operational
                 </span>
               </div>
 
               <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-stone-800">Catalogue Service :4003</p>
-                  <p className="text-[10px] text-stone-400">DB: marketplace_catalogue</p>
+                  <p className="font-bold text-stone-800">Catalogue & stock</p>
+                  <p className="text-[10px] text-stone-400">Listings and live availability</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Healthy
+                  Operational
                 </span>
               </div>
 
               <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-stone-800">Order Service :4004</p>
-                  <p className="text-[10px] text-stone-400">DB: marketplace_orders</p>
+                  <p className="font-bold text-stone-800">Orders & fulfilment</p>
+                  <p className="text-[10px] text-stone-400">Checkout and per-store routing</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                  Healthy
+                  Operational
                 </span>
               </div>
             </div>

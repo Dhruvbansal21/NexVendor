@@ -316,10 +316,11 @@ export const CheckoutPage: React.FC = () => {
             <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 text-[11px] text-stone-500 space-y-1">
               <div className="flex items-center gap-1 font-semibold text-stone-700">
                 <ShieldCheck className="w-3.5 h-3.5 text-brand-600" />
-                <span>Duplicate-safe order reference</span>
+                <span>Your order is protected</span>
               </div>
-              <p className="font-mono text-[10px] text-stone-400 truncate">
-                {idempotencyKey || 'Generating...'}
+              <p className="text-[10px] text-stone-400 leading-relaxed">
+                Stock is reserved the moment you confirm, and a repeated submission can
+                never create a second order or a second charge.
               </p>
             </div>
           </div>

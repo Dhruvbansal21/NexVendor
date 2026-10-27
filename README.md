@@ -1,4 +1,4 @@
-# Multi-Vendor Marketplace (BEE-II Mid-Evaluation Milestone)
+# NexVendor — Distributed Multi-Vendor Marketplace Platform
 
 A production-grade, distributed multi-vendor e-commerce platform built as an event-ready microservices architecture. Implements real-world multi-vendor workflows: isolated databases per domain, role-based access control, vendor onboarding with private KYC verification, atomic multi-item stock reservation with compensating sagas, idempotent checkout grouping orders into vendor sub-orders, state machine transitions, and cross-service dashboard aggregations.
 
@@ -58,25 +58,48 @@ flowchart TB
 | **Vendor Service** | `4002` | Node.js (ESM), Express, Mongoose, Multer (private uploads) | `marketplace_vendor` | Store onboarding, private KYC document streaming, admin verify/reject, catalogue status synchronization |
 | **Catalogue Service** | `4003` | Node.js (ESM), Express, Mongoose, Zod | `marketplace_catalogue` | Product CRUD, category aggregation, atomic stock reservation (`$inc: -qty`), compensating release, verified vendor guards |
 | **Order Service** | `4004` | Node.js (ESM), Express, Mongoose, Zod | `marketplace_orders` | Idempotent checkout (`Idempotency-Key` unique index), sub-order grouping, mini-saga stock compensation, finite state machine |
-| **MongoDB** | `27017` | MongoDB 7.x Community / Docker | 4 isolated databases | Strict domain boundary isolation (no cross-DB queries) |
+| **Database Tier** | Cloud / Local | MongoDB 7.x Community / MongoDB Atlas | 4 isolated databases | Domain boundary isolation (`marketplace_auth`, `marketplace_vendor`, `marketplace_catalogue`, `marketplace_orders`) |
 
 ---
 
 ## 3. Prerequisites & Environment Setup
 
 - **Node.js**: `v20.x` or `v22.x`
-- **MongoDB**: Native instance on `127.0.0.1:27017` or via Docker Compose.
+- **MongoDB**: MongoDB Atlas (Cloud Cluster) or local MongoDB on `127.0.0.1:27017`
 - **npm**: `v10.x+` (uses npm workspaces)
 
-### Configuration (`.env`)
-A root `.env` file controls service connectivity:
-```env
-MONGO_URI_AUTH=mongodb://127.0.0.1:27017/marketplace_auth
-MONGO_URI_VENDOR=mongodb://127.0.0.1:27017/marketplace_vendor
-MONGO_URI_CATALOGUE=mongodb://127.0.0.1:27017/marketplace_catalogue
-MONGO_URI_ORDERS=mongodb://127.0.0.1:27017/marketplace_orders
+### Cloud MongoDB Setup (MongoDB Atlas)
 
-JWT_SECRET=change-me-dev-only-secret-key-32chars-min
+The platform supports MongoDB Atlas Cloud clusters out-of-the-box:
+
+1. Create a free cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+2. Under **Network Access**, whitelist your IP address (or `0.0.0.0/0` for cloud deployment).
+3. Under **Database Access**, create a database user and password.
+4. Click **Connect** → **Drivers** (Node.js) and copy the connection string.
+5. In your `.env` file, set `MONGODB_URI`:
+   ```env
+   MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/?retryWrites=true&w=majority
+   ```
+   *Each microservice will automatically route to its isolated database (`marketplace_auth`, `marketplace_vendor`, `marketplace_catalogue`, `marketplace_orders`) on your cluster.*
+
+### Configuration (`.env`)
+
+Copy `.env.example` to create your local `.env`:
+```bash
+cp .env.example .env
+```
+
+```env
+# Cloud MongoDB (Option A - Recommended)
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/?retryWrites=true&w=majority
+
+# Or Local MongoDB (Option B - Fallback)
+# MONGO_URI_AUTH=mongodb://127.0.0.1:27017/marketplace_auth
+# MONGO_URI_VENDOR=mongodb://127.0.0.1:27017/marketplace_vendor
+# MONGO_URI_CATALOGUE=mongodb://127.0.0.1:27017/marketplace_catalogue
+# MONGO_URI_ORDERS=mongodb://127.0.0.1:27017/marketplace_orders
+
+JWT_SECRET=change-me-production-secret-key-32chars-min
 JWT_EXPIRES_IN=1d
 INTERNAL_API_KEY=change-me-internal-service-secret-key
 
@@ -159,9 +182,9 @@ npm test
 
 ---
 
-## 7. Scope Boundaries (Current vs Phase 2)
+## 7. Architecture Capabilities & Roadmap
 
-### In-Scope (BEE-II Mid-Evaluation Milestone — ~50% Complete):
+### Core Implemented Capabilities:
 - Monorepo with isolated microservice directories, schemas, and databases.
 - Gateway reverse proxy with JWT verification, role authorization, and header propagation.
 - Vendor onboarding flow with multipart KYC upload to private storage (`./private_uploads`).
@@ -171,7 +194,7 @@ npm test
 - 14 responsive frontend pages with Tailwind CSS, Redux Toolkit, and RTK Query.
 - Deterministic idempotent seed script and automated Vitest test suite.
 
-### Out-of-Scope (Deferred to Phase 2):
+### Extended Enterprise Roadmap:
 - Live payment processor webhooks (Stripe / Razorpay) — currently using `DemoPaymentProvider` with integer paise.
 - Automated banking settlement and payout transfers.
 - Distributed message broker (RabbitMQ / Redis Streams / Kafka) — currently using internal HTTP with `eventBus` interface.

@@ -160,7 +160,7 @@ export const MyOrdersPage: React.FC = () => {
                 </span>
               </div>
               <span className="font-mono text-[10px] text-stone-400">
-                Ref: {order.idempotencyKey.slice(0, 8).toUpperCase()}
+                Ref #{order.id.slice(-8).toUpperCase()}
               </span>
             </div>
           </div>
