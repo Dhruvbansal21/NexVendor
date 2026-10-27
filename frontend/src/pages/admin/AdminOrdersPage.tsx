@@ -30,10 +30,10 @@ export const AdminOrdersPage: React.FC = () => {
       <main className="flex-1 p-6 md:p-10 max-w-6xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl font-extrabold text-stone-900 tracking-tight">
               All Platform Orders
             </h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               Global order logs across all vendors and customers on the marketplace
             </p>
           </div>
@@ -41,7 +41,7 @@ export const AdminOrdersPage: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full sm:w-48 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 font-medium focus:border-indigo-500 outline-hidden"
+            className="w-full sm:w-48 px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-stone-700 font-medium focus:border-brand-500 outline-none"
           >
             <option value="">All Orders</option>
             <option value="pending">Pending</option>
@@ -54,11 +54,11 @@ export const AdminOrdersPage: React.FC = () => {
         </div>
 
         {/* Orders Table */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-sm">
+        <div className="bg-white rounded-3xl border border-stone-200/80 overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200/80 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                <tr className="bg-stone-50 border-b border-stone-200/80 text-[11px] font-bold text-stone-500 uppercase tracking-wider">
                   <th className="py-3.5 px-4">Order ID & Date</th>
                   <th className="py-3.5 px-4">Customer</th>
                   <th className="py-3.5 px-4">Vendors Involved</th>
@@ -67,34 +67,34 @@ export const AdminOrdersPage: React.FC = () => {
                   <th className="py-3.5 px-4">Payment</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
+              <tbody className="divide-y divide-stone-100 font-medium text-stone-700">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={6} className="py-12 text-center text-slate-400">Loading orders...</td>
+                    <td colSpan={6} className="py-12 text-center text-stone-400">Loading orders...</td>
                   </tr>
                 ) : orders.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="py-12 text-center text-slate-400">
+                    <td colSpan={6} className="py-12 text-center text-stone-400">
                       No orders found under this filter.
                     </td>
                   </tr>
                 ) : (
                   orders.map((o) => (
-                    <tr key={o.id} className="hover:bg-slate-50/60 transition">
+                    <tr key={o.id} className="hover:bg-stone-50/60 transition">
                       <td className="py-3.5 px-4">
-                        <span className="font-mono font-bold text-slate-900 block">
+                        <span className="font-mono font-bold text-stone-900 block">
                           #{o.id.slice(-8).toUpperCase()}
                         </span>
-                        <span className="text-[10px] text-slate-400">
+                        <span className="text-[10px] text-stone-400">
                           {formatDate(o.createdAt)}
                         </span>
                       </td>
 
                       <td className="py-3.5 px-4">
-                        <span className="font-bold text-slate-800 block">
+                        <span className="font-bold text-stone-800 block">
                           {o.shippingAddress?.fullName}
                         </span>
-                        <span className="text-[10px] text-slate-400 block truncate max-w-[150px]">
+                        <span className="text-[10px] text-stone-400 block truncate max-w-[150px]">
                           {o.shippingAddress?.city}, {o.shippingAddress?.state}
                         </span>
                       </td>
@@ -104,7 +104,7 @@ export const AdminOrdersPage: React.FC = () => {
                           {o.subOrders?.map((sub) => (
                             <span
                               key={sub.id}
-                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 text-[10px] font-semibold text-slate-700"
+                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-stone-100 text-[10px] font-semibold text-stone-700"
                             >
                               <Store className="w-3 h-3 text-brand-600" />
                               <span>{sub.storeName}</span>
@@ -121,7 +121,7 @@ export const AdminOrdersPage: React.FC = () => {
                         </div>
                       </td>
 
-                      <td className="py-3.5 px-4 font-bold text-slate-900">
+                      <td className="py-3.5 px-4 font-bold text-stone-900">
                         {formatPrice(o.totalAmount)}
                       </td>
 

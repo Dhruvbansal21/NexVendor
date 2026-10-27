@@ -38,13 +38,13 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <div className="min-h-[calc(100vh-16rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white rounded-3xl border border-slate-200/80 p-8 shadow-sm">
+      <div className="max-w-md w-full bg-white rounded-3xl border border-stone-200/80 p-8 shadow-sm">
         <div className="text-center mb-6">
           <div className="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-brand-500/20">
             <ShoppingBag className="w-6 h-6" />
           </div>
-          <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Create your account</h2>
-          <p className="text-xs text-slate-500 mt-1">Join as a marketplace customer or store vendor</p>
+          <h2 className="text-xl font-extrabold text-stone-900 tracking-tight">Create your account</h2>
+          <p className="text-xs text-stone-500 mt-1">Join as a marketplace customer or store vendor</p>
         </div>
 
         {errorMsg && (
@@ -56,31 +56,31 @@ export const RegisterPage: React.FC = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Full Name</label>
+            <label className="block text-xs font-semibold text-stone-700 mb-1">Full Name</label>
             <input
               type="text"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. John Doe"
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition"
+              className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Email address</label>
+            <label className="block text-xs font-semibold text-stone-700 mb-1">Email address</label>
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="e.g. you@example.com"
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition"
+              className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Password</label>
+            <label className="block text-xs font-semibold text-stone-700 mb-1">Password</label>
             <input
               type="password"
               required
@@ -88,18 +88,18 @@ export const RegisterPage: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Min 6 characters"
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition"
+              className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-2">Select Account Role</label>
+            <label className="block text-xs font-semibold text-stone-700 mb-2">Select Account Role</label>
             <div className="grid grid-cols-2 gap-3">
               <label
                 className={`flex flex-col items-center justify-center p-3 rounded-xl border text-center cursor-pointer transition ${
                   role === 'customer'
-                    ? 'border-brand-500 bg-brand-50 text-brand-700 shadow-xs'
-                    : 'border-slate-200 hover:bg-slate-50 text-slate-600'
+                    ? 'border-brand-500 bg-brand-50 text-brand-700 shadow-sm'
+                    : 'border-stone-200 hover:bg-stone-50 text-stone-600'
                 }`}
               >
                 <input
@@ -112,14 +112,14 @@ export const RegisterPage: React.FC = () => {
                 />
                 <ShoppingCart className="w-5 h-5 mb-1 text-brand-600" />
                 <span className="text-xs font-bold">Customer</span>
-                <span className="text-[10px] text-slate-400 mt-0.5">Shop & place orders</span>
+                <span className="text-[10px] text-stone-400 mt-0.5">Shop & place orders</span>
               </label>
 
               <label
                 className={`flex flex-col items-center justify-center p-3 rounded-xl border text-center cursor-pointer transition ${
                   role === 'vendor'
-                    ? 'border-brand-500 bg-brand-50 text-brand-700 shadow-xs'
-                    : 'border-slate-200 hover:bg-slate-50 text-slate-600'
+                    ? 'border-brand-500 bg-brand-50 text-brand-700 shadow-sm'
+                    : 'border-stone-200 hover:bg-stone-50 text-stone-600'
                 }`}
               >
                 <input
@@ -130,9 +130,9 @@ export const RegisterPage: React.FC = () => {
                   onChange={() => setRole('vendor')}
                   className="sr-only"
                 />
-                <Store className="w-5 h-5 mb-1 text-purple-600" />
+                <Store className="w-5 h-5 mb-1 text-teal-600" />
                 <span className="text-xs font-bold">Vendor</span>
-                <span className="text-[10px] text-slate-400 mt-0.5">Sell & manage products</span>
+                <span className="text-[10px] text-stone-400 mt-0.5">Sell & manage products</span>
               </label>
             </div>
           </div>
@@ -151,7 +151,7 @@ export const RegisterPage: React.FC = () => {
           </button>
         </form>
 
-        <p className="mt-6 text-center text-xs text-slate-500">
+        <p className="mt-6 text-center text-xs text-stone-500">
           Already have an account?{' '}
           <Link to="/login" className="font-semibold text-brand-600 hover:text-brand-700">
             Sign in

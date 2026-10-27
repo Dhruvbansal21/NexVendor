@@ -157,10 +157,10 @@ export const VendorProductsPage: React.FC = () => {
       <main className="flex-1 p-6 md:p-10 max-w-6xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl font-extrabold text-stone-900 tracking-tight">
               Product Inventory
             </h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               Add, update, and manage your products. Verified vendors can publish products live to the marketplace.
             </p>
           </div>
@@ -190,20 +190,20 @@ export const VendorProductsPage: React.FC = () => {
         {/* Filter Bar */}
         <div className="mb-6 flex flex-col sm:flex-row items-center gap-3">
           <div className="relative flex-1 w-full">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-2.5" />
+            <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-2.5" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search your products by title..."
-              className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-xl text-xs focus:border-brand-500 outline-hidden"
+              className="w-full pl-9 pr-4 py-2 bg-white border border-stone-200 rounded-xl text-xs focus:border-brand-500 outline-none"
             />
           </div>
 
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full sm:w-44 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 font-medium focus:border-brand-500 outline-hidden"
+            className="w-full sm:w-44 px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-stone-700 font-medium focus:border-brand-500 outline-none"
           >
             <option value="">All Statuses</option>
             <option value="active">Active Only</option>
@@ -212,11 +212,11 @@ export const VendorProductsPage: React.FC = () => {
         </div>
 
         {/* Products Table */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-sm">
+        <div className="bg-white rounded-3xl border border-stone-200/80 overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200/80 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                <tr className="bg-stone-50 border-b border-stone-200/80 text-[11px] font-bold text-stone-500 uppercase tracking-wider">
                   <th className="py-3.5 px-4">Product</th>
                   <th className="py-3.5 px-4">Category</th>
                   <th className="py-3.5 px-4">Price</th>
@@ -225,37 +225,37 @@ export const VendorProductsPage: React.FC = () => {
                   <th className="py-3.5 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
+              <tbody className="divide-y divide-stone-100 font-medium text-stone-700">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={6} className="py-12 text-center text-slate-400">Loading products...</td>
+                    <td colSpan={6} className="py-12 text-center text-stone-400">Loading products...</td>
                   </tr>
                 ) : products.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="py-12 text-center text-slate-400">
+                    <td colSpan={6} className="py-12 text-center text-stone-400">
                       No products found. Click "Add New Product" to start selling.
                     </td>
                   </tr>
                 ) : (
                   products.map((p) => (
-                    <tr key={p.id} className="hover:bg-slate-50/60 transition">
+                    <tr key={p.id} className="hover:bg-stone-50/60 transition">
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
                           <img
                             src={p.imageUrl}
                             alt={p.title}
-                            className="w-10 h-10 rounded-lg object-cover bg-slate-100 border border-slate-100 flex-shrink-0"
+                            className="w-10 h-10 rounded-lg object-cover bg-stone-100 border border-stone-100 flex-shrink-0"
                           />
                           <div>
-                            <span className="font-bold text-slate-900 block truncate max-w-xs">{p.title}</span>
-                            <span className="text-[10px] text-slate-400 truncate block max-w-xs">{p.description}</span>
+                            <span className="font-bold text-stone-900 block truncate max-w-xs">{p.title}</span>
+                            <span className="text-[10px] text-stone-400 truncate block max-w-xs">{p.description}</span>
                           </div>
                         </div>
                       </td>
-                      <td className="py-3 px-4 text-slate-600">{p.category}</td>
-                      <td className="py-3 px-4 font-bold text-slate-900">{formatPrice(p.price)}</td>
+                      <td className="py-3 px-4 text-stone-600">{p.category}</td>
+                      <td className="py-3 px-4 font-bold text-stone-900">{formatPrice(p.price)}</td>
                       <td className="py-3 px-4">
-                        <span className={`font-semibold ${p.stock <= 5 ? 'text-amber-600' : 'text-slate-700'}`}>
+                        <span className={`font-semibold ${p.stock <= 5 ? 'text-amber-600' : 'text-stone-700'}`}>
                           {p.stock} units
                         </span>
                       </td>
@@ -265,14 +265,14 @@ export const VendorProductsPage: React.FC = () => {
                       <td className="py-3 px-4 text-right space-x-1.5">
                         <button
                           onClick={() => openEditModal(p)}
-                          className="p-1.5 rounded-lg text-slate-600 hover:text-brand-600 hover:bg-brand-50 transition"
+                          className="p-1.5 rounded-lg text-stone-600 hover:text-brand-600 hover:bg-brand-50 transition"
                           title="Edit Product"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={() => setDeleteTargetId(p.id)}
-                          className="p-1.5 rounded-lg text-slate-600 hover:text-rose-600 hover:bg-rose-50 transition"
+                          className="p-1.5 rounded-lg text-stone-600 hover:text-rose-600 hover:bg-rose-50 transition"
                           title="Delete Product"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -288,16 +288,16 @@ export const VendorProductsPage: React.FC = () => {
 
         {/* Create / Edit Modal */}
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
-            <div className="bg-white rounded-3xl border border-slate-200 max-w-lg w-full p-6 shadow-xl relative animate-scale-up">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/50 backdrop-blur-xs">
+            <div className="bg-white rounded-3xl border border-stone-200 max-w-lg w-full p-6 shadow-xl relative animate-scale-up">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-5 right-5 p-1 text-slate-400 hover:text-slate-600 rounded-lg transition"
+                className="absolute top-5 right-5 p-1 text-stone-400 hover:text-stone-600 rounded-lg transition"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              <h2 className="text-base font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100">
+              <h2 className="text-base font-bold text-stone-900 mb-4 pb-2 border-b border-stone-100">
                 {editingProduct ? 'Edit Product' : 'Add New Product'}
               </h2>
 
@@ -309,32 +309,32 @@ export const VendorProductsPage: React.FC = () => {
 
               <form onSubmit={handleFormSubmit} className="space-y-4 text-xs">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Product Title *</label>
+                  <label className="block font-semibold text-stone-700 mb-1">Product Title *</label>
                   <input
                     type="text"
                     required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="e.g. Wireless Noise-Cancelling Headphones"
-                    className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:border-brand-500"
+                    className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl outline-none focus:bg-white focus:border-brand-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Description *</label>
+                  <label className="block font-semibold text-stone-700 mb-1">Description *</label>
                   <textarea
                     rows={2}
                     required
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Detailed specifications, features, materials..."
-                    className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:border-brand-500"
+                    className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl outline-none focus:bg-white focus:border-brand-500"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Price (₹ INR) *</label>
+                    <label className="block font-semibold text-stone-700 mb-1">Price (₹ INR) *</label>
                     <input
                       type="number"
                       step="0.01"
@@ -343,30 +343,30 @@ export const VendorProductsPage: React.FC = () => {
                       value={priceRupees}
                       onChange={(e) => setPriceRupees(e.target.value)}
                       placeholder="e.g. 1499.00"
-                      className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:border-brand-500"
+                      className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl outline-none focus:bg-white focus:border-brand-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Stock Quantity *</label>
+                    <label className="block font-semibold text-stone-700 mb-1">Stock Quantity *</label>
                     <input
                       type="number"
                       required
                       min="0"
                       value={stock}
                       onChange={(e) => setStock(e.target.value)}
-                      className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:border-brand-500"
+                      className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl outline-none focus:bg-white focus:border-brand-500"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Category *</label>
+                    <label className="block font-semibold text-stone-700 mb-1">Category *</label>
                     <select
                       value={category}
                       onChange={(e) => setCategory(e.target.value)}
-                      className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:border-brand-500 font-medium"
+                      className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl outline-none focus:bg-white focus:border-brand-500 font-medium"
                     >
                       <option value="Electronics">Electronics</option>
                       <option value="Fashion & Apparel">Fashion & Apparel</option>
@@ -378,12 +378,12 @@ export const VendorProductsPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 mb-1">Status</label>
+                    <label className="block font-semibold text-stone-700 mb-1">Status</label>
                     <select
                       value={status}
                       onChange={(e) => setStatus(e.target.value as any)}
                       disabled={!isVerified}
-                      className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:border-brand-500 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl outline-none focus:bg-white focus:border-brand-500 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <option value="draft">Draft (Private)</option>
                       <option value="active" disabled={!isVerified}>
@@ -394,22 +394,22 @@ export const VendorProductsPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Image URL *</label>
+                  <label className="block font-semibold text-stone-700 mb-1">Image URL *</label>
                   <input
                     type="url"
                     required
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
                     placeholder="https://..."
-                    className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:border-brand-500"
+                    className="w-full px-3.5 py-2 bg-stone-50 border border-stone-200 rounded-xl outline-none focus:bg-white focus:border-brand-500"
                   />
                 </div>
 
-                <div className="flex justify-end gap-2.5 pt-4 border-t border-slate-100">
+                <div className="flex justify-end gap-2.5 pt-4 border-t border-stone-100">
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="px-4 py-2 border border-slate-200 rounded-xl text-slate-700 hover:bg-slate-50 font-semibold"
+                    className="px-4 py-2 border border-stone-200 rounded-xl text-stone-700 hover:bg-stone-50 font-semibold"
                   >
                     Cancel
                   </button>

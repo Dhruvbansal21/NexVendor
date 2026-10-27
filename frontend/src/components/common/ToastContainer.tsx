@@ -17,14 +17,14 @@ const ToastSingle: React.FC<{ toast: ToastItem }> = ({ toast }) => {
     success: <CheckCircle2 className="w-4 h-4 text-emerald-500" />,
     error: <AlertCircle className="w-4 h-4 text-rose-500" />,
     warning: <AlertTriangle className="w-4 h-4 text-amber-500" />,
-    info: <Info className="w-4 h-4 text-blue-500" />
+    info: <Info className="w-4 h-4 text-sky-500" />
   };
 
   const borderColors = {
     success: 'border-emerald-200 bg-emerald-50/90 text-emerald-900',
     error: 'border-rose-200 bg-rose-50/90 text-rose-900',
     warning: 'border-amber-200 bg-amber-50/90 text-amber-900',
-    info: 'border-blue-200 bg-blue-50/90 text-blue-900'
+    info: 'border-sky-200 bg-sky-50/90 text-sky-900'
   };
 
   return (
@@ -37,7 +37,7 @@ const ToastSingle: React.FC<{ toast: ToastItem }> = ({ toast }) => {
       <p className="text-xs font-medium leading-relaxed flex-grow">{toast.message}</p>
       <button
         onClick={() => dispatch(removeToast(toast.id))}
-        className="p-1 -mr-1 -mt-1 text-slate-400 hover:text-slate-600 rounded transition"
+        className="p-1 -mr-1 -mt-1 text-stone-400 hover:text-stone-600 rounded transition"
       >
         <X className="w-3.5 h-3.5" />
       </button>

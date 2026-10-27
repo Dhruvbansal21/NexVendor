@@ -1,97 +1,120 @@
 import React from 'react';
-import { ShoppingBag, ShieldCheck, Database, Layers } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ShoppingBag, ShieldCheck, Truck, HeartHandshake } from 'lucide-react';
+
+const shopLinks = [
+  { label: 'All products', to: '/' },
+  { label: 'Handicrafts', to: '/?category=Handicrafts' },
+  { label: 'Home & living', to: '/?category=Home%20%26%20Living' },
+  { label: 'Your cart', to: '/cart' }
+];
+
+const accountLinks = [
+  { label: 'Sign in', to: '/login' },
+  { label: 'Create an account', to: '/register' },
+  { label: 'Your orders', to: '/my-orders' }
+];
+
+const vendorLinks = [
+  { label: 'Open a store', to: '/register' },
+  { label: 'Seller dashboard', to: '/vendor/dashboard' },
+  { label: 'Store & verification', to: '/vendor/onboarding' }
+];
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs">
+    <footer className="bg-stone-900 text-stone-400 text-xs">
+      {/* Reassurance strip */}
+      <div className="border-b border-stone-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="flex items-start gap-3">
+            <ShieldCheck className="w-5 h-5 text-brand-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-stone-100 font-semibold text-sm">Every seller is checked</p>
+              <p className="mt-1 leading-relaxed">
+                Stores are reviewed before a single product goes live.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <Truck className="w-5 h-5 text-brand-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-stone-100 font-semibold text-sm">Packed by the maker</p>
+              <p className="mt-1 leading-relaxed">
+                Orders are split per store, so each parcel comes straight from the person who made it.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <HeartHandshake className="w-5 h-5 text-brand-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-stone-100 font-semibold text-sm">Fair for small shops</p>
+              <p className="mt-1 leading-relaxed">
+                No shelf fees, no paid placement. Sellers keep what they earn.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand Info */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-white">
               <div className="w-7 h-7 rounded-lg bg-brand-600 flex items-center justify-center">
                 <ShoppingBag className="w-4 h-4" />
               </div>
-              <span className="font-extrabold text-sm tracking-tight">NexVendor</span>
+              <span className="font-display font-semibold text-base tracking-tight">NexVendor</span>
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">
-              Multi-Vendor Marketplace powered by independent Node.js microservices, isolated MongoDB databases, and React + RTK Query.
+            <p className="leading-relaxed">
+              A marketplace for independent makers, growers and small shops — the kind of
+              places you'd walk into on a Saturday morning, gathered in one basket.
             </p>
           </div>
 
-          {/* Architecture Highlights */}
-          <div className="space-y-2">
-            <h4 className="font-semibold text-slate-200 uppercase tracking-wider text-[11px]">
-              Microservices Stack
-            </h4>
-            <ul className="space-y-1.5 text-slate-400 text-xs">
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
-                API Gateway (:4000)
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                Auth Service (:4001)
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-                Vendor Service (:4002)
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                Catalogue Service (:4003)
-              </li>
-              <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                Order Service (:4004)
-              </li>
+          <div className="space-y-2.5">
+            <h4 className="font-semibold text-stone-200 uppercase tracking-wider text-[11px]">Shop</h4>
+            <ul className="space-y-2">
+              {shopLinks.map((l) => (
+                <li key={l.label}>
+                  <Link to={l.to} className="hover:text-brand-300 transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Business Rules */}
-          <div className="space-y-2">
-            <h4 className="font-semibold text-slate-200 uppercase tracking-wider text-[11px]">
-              Evaluation Features
-            </h4>
-            <ul className="space-y-1.5 text-slate-400 text-xs">
-              <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                Role-based access & JWT
-              </li>
-              <li className="flex items-center gap-1.5">
-                <Database className="w-3.5 h-3.5 text-blue-400" />
-                4 Separate MongoDB Databases
-              </li>
-              <li className="flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-indigo-400" />
-                Idempotency & Mini-Saga rollback
-              </li>
+          <div className="space-y-2.5">
+            <h4 className="font-semibold text-stone-200 uppercase tracking-wider text-[11px]">Your account</h4>
+            <ul className="space-y-2">
+              {accountLinks.map((l) => (
+                <li key={l.label}>
+                  <Link to={l.to} className="hover:text-brand-300 transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Milestone Disclaimer */}
-          <div className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/60 space-y-2">
-            <div className="flex items-center gap-1.5 text-amber-400 font-bold text-xs uppercase tracking-wider">
-              <span>BEE-II Evaluation Milestone</span>
-            </div>
-            <p className="text-[11px] text-slate-300 leading-relaxed">
-              ~50% progress milestone. Demo checkout operates without real money movement.
-            </p>
-            <p className="text-[11px] text-slate-400 border-t border-slate-700/80 pt-2 font-medium">
-              Phase 2 Pending: Real payment processing, automated vendor commission splits & RabbitMQ event streaming.
-            </p>
+          <div className="space-y-2.5">
+            <h4 className="font-semibold text-stone-200 uppercase tracking-wider text-[11px]">Sell with us</h4>
+            <ul className="space-y-2">
+              {vendorLinks.map((l) => (
+                <li key={l.label}>
+                  <Link to={l.to} className="hover:text-brand-300 transition-colors">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-400">
-          <p>© 2026 NexVendor Marketplace. Built for academic evaluation.</p>
-          <div className="flex items-center gap-4">
-            <span>Gateway :4000</span>
-            <span>•</span>
-            <span>Frontend :5173</span>
-            <span>•</span>
-            <span>MongoDB :27017</span>
-          </div>
+        <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-stone-500">
+          <p>© {new Date().getFullYear()} NexVendor. Made for small shops and the people who love them.</p>
+          <p>Prices shown in Indian rupees, inclusive of taxes.</p>
         </div>
       </div>
     </footer>

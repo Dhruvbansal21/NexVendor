@@ -36,11 +36,11 @@ export function DataTable<T extends { id?: string; _id?: string }>({
   const totalPages = Math.ceil(total / limit) || 1;
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col">
+    <div className="bg-white rounded-2xl border border-stone-200/80 shadow-sm overflow-hidden flex flex-col">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
-            <tr className="bg-slate-50/80 border-b border-slate-200/80 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+            <tr className="bg-stone-50/80 border-b border-stone-200/80 text-[11px] font-bold text-stone-500 uppercase tracking-wider">
               {columns.map((col) => (
                 <th key={col.key} className={`py-3.5 px-4 ${col.className || ''}`}>
                   {col.header}
@@ -48,7 +48,7 @@ export function DataTable<T extends { id?: string; _id?: string }>({
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
+          <tbody className="divide-y divide-stone-100 font-medium text-stone-700">
             {isLoading ? (
               Array.from({ length: 5 }).map((_, i) => (
                 <TableRowSkeleton key={i} columns={columns.length} />
@@ -61,7 +61,7 @@ export function DataTable<T extends { id?: string; _id?: string }>({
               </tr>
             ) : (
               data.map((item, idx) => (
-                <tr key={item.id || item._id || idx} className="hover:bg-slate-50/60 transition">
+                <tr key={item.id || item._id || idx} className="hover:bg-stone-50/60 transition">
                   {columns.map((col) => (
                     <td key={col.key} className={`py-3.5 px-4 ${col.className || ''}`}>
                       {col.render ? col.render(item) : (item as any)[col.key]}
@@ -76,27 +76,27 @@ export function DataTable<T extends { id?: string; _id?: string }>({
 
       {/* Pagination Footer */}
       {total > 0 && onPageChange && (
-        <div className="flex items-center justify-between px-4 py-3 bg-slate-50/50 border-t border-slate-100 text-xs text-slate-500">
+        <div className="flex items-center justify-between px-4 py-3 bg-stone-50/50 border-t border-stone-100 text-xs text-stone-500">
           <div>
-            Showing <span className="font-semibold text-slate-800">{(page - 1) * limit + 1}</span> to{' '}
-            <span className="font-semibold text-slate-800">{Math.min(page * limit, total)}</span> of{' '}
-            <span className="font-semibold text-slate-800">{total}</span> results
+            Showing <span className="font-semibold text-stone-800">{(page - 1) * limit + 1}</span> to{' '}
+            <span className="font-semibold text-stone-800">{Math.min(page * limit, total)}</span> of{' '}
+            <span className="font-semibold text-stone-800">{total}</span> results
           </div>
           <div className="flex items-center gap-1.5">
             <button
               onClick={() => onPageChange(page - 1)}
               disabled={page <= 1 || isLoading}
-              className="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="p-1.5 rounded-lg border border-stone-200 hover:bg-stone-100 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="px-2 text-xs font-semibold text-slate-700">
+            <span className="px-2 text-xs font-semibold text-stone-700">
               Page {page} of {totalPages}
             </span>
             <button
               onClick={() => onPageChange(page + 1)}
               disabled={page >= totalPages || isLoading}
-              className="p-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition"
+              className="p-1.5 rounded-lg border border-stone-200 hover:bg-stone-100 disabled:opacity-40 disabled:cursor-not-allowed transition"
             >
               <ChevronRight className="w-4 h-4" />
             </button>

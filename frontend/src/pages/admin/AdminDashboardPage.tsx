@@ -28,17 +28,17 @@ export const AdminDashboardPage: React.FC = () => {
       <main className="flex-1 p-6 md:p-10 max-w-6xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl font-extrabold text-stone-900 tracking-tight">
               Admin Platform Overview
             </h1>
-            <p className="text-xs text-slate-500 mt-1">
-              Aggregated system metrics composed from Gateway across all 4 independent microservices
+            <p className="text-xs text-stone-500 mt-1">
+              Marketplace-wide numbers, gathered across every service
             </p>
           </div>
 
           <Link
             to="/admin/vendors"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow-sm active:scale-95 self-start sm:self-auto"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-sm active:scale-95 self-start sm:self-auto"
           >
             <ShieldCheck className="w-4 h-4" />
             <span>Review Pending Vendors</span>
@@ -47,7 +47,7 @@ export const AdminDashboardPage: React.FC = () => {
 
         {/* Pending Vendors Action Notice */}
         {(dash?.summary?.pendingVendors ?? 0) > 0 && (
-          <div className="mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-center justify-between shadow-xs">
+          <div className="mb-6 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-center justify-between shadow-sm">
             <div className="flex items-center gap-2.5">
               <Clock className="w-4 h-4 text-amber-600 flex-shrink-0" />
               <span>
@@ -76,7 +76,7 @@ export const AdminDashboardPage: React.FC = () => {
             title="Total Orders"
             value={dash?.summary?.totalOrders ?? 0}
             subtitle="Processed orders"
-            color="blue"
+            color="sky"
             icon={<ClipboardList className="w-4 h-4" />}
           />
           <StatCard
@@ -90,7 +90,7 @@ export const AdminDashboardPage: React.FC = () => {
             title="Total Products"
             value={dash?.summary?.totalProducts ?? 0}
             subtitle={`${dash?.catalogue?.activeProducts ?? 0} active`}
-            color="purple"
+            color="teal"
             icon={<Package className="w-4 h-4" />}
           />
           <StatCard
@@ -102,49 +102,49 @@ export const AdminDashboardPage: React.FC = () => {
           />
         </div>
 
-        {/* Microservices Health Composition Box */}
+        {/* Service health panel */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm lg:col-span-1">
-            <h2 className="text-sm font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+          <div className="bg-white rounded-3xl border border-stone-200/80 p-6 shadow-sm lg:col-span-1">
+            <h2 className="text-sm font-bold text-stone-900 mb-4 pb-2 border-b border-stone-100 flex items-center gap-2">
               <Server className="w-4 h-4 text-brand-600" />
-              <span>Backend Microservices</span>
+              <span>System health</span>
             </h2>
 
             <div className="space-y-3 text-xs">
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-slate-800">Auth Service :4001</p>
-                  <p className="text-[10px] text-slate-400">DB: marketplace_auth</p>
+                  <p className="font-bold text-stone-800">Auth Service :4001</p>
+                  <p className="text-[10px] text-stone-400">DB: marketplace_auth</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
                   Healthy
                 </span>
               </div>
 
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-slate-800">Vendor Service :4002</p>
-                  <p className="text-[10px] text-slate-400">DB: marketplace_vendor</p>
+                  <p className="font-bold text-stone-800">Vendor Service :4002</p>
+                  <p className="text-[10px] text-stone-400">DB: marketplace_vendor</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
                   Healthy
                 </span>
               </div>
 
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-slate-800">Catalogue Service :4003</p>
-                  <p className="text-[10px] text-slate-400">DB: marketplace_catalogue</p>
+                  <p className="font-bold text-stone-800">Catalogue Service :4003</p>
+                  <p className="text-[10px] text-stone-400">DB: marketplace_catalogue</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
                   Healthy
                 </span>
               </div>
 
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100 flex items-center justify-between">
+              <div className="p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between">
                 <div>
-                  <p className="font-bold text-slate-800">Order Service :4004</p>
-                  <p className="text-[10px] text-slate-400">DB: marketplace_orders</p>
+                  <p className="font-bold text-stone-800">Order Service :4004</p>
+                  <p className="text-[10px] text-stone-400">DB: marketplace_orders</p>
                 </div>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
                   Healthy
@@ -154,15 +154,15 @@ export const AdminDashboardPage: React.FC = () => {
           </div>
 
           {/* Recent Orders in Platform */}
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm lg:col-span-2">
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
+          <div className="bg-white rounded-3xl border border-stone-200/80 p-6 shadow-sm lg:col-span-2">
+            <div className="flex items-center justify-between mb-4 pb-2 border-b border-stone-100">
               <div>
-                <h2 className="text-sm font-bold text-slate-900">Recent Marketplace Orders</h2>
-                <p className="text-xs text-slate-500">Global transaction stream across all vendors</p>
+                <h2 className="text-sm font-bold text-stone-900">Recent Marketplace Orders</h2>
+                <p className="text-xs text-stone-500">Global transaction stream across all vendors</p>
               </div>
               <Link
                 to="/admin/orders"
-                className="text-xs font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1"
+                className="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1"
               >
                 <span>View All</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -170,21 +170,21 @@ export const AdminDashboardPage: React.FC = () => {
             </div>
 
             {(!dash?.orders?.recentOrders || dash.orders.recentOrders.length === 0) ? (
-              <div className="text-center py-8 text-xs text-slate-400">No orders recorded in system yet</div>
+              <div className="text-center py-8 text-xs text-stone-400">No orders recorded in system yet</div>
             ) : (
-              <div className="divide-y divide-slate-100">
+              <div className="divide-y divide-stone-100">
                 {dash.orders.recentOrders.map((ord) => (
                   <div key={ord.id} className="py-3 flex items-center justify-between text-xs">
                     <div>
-                      <span className="font-mono font-bold text-slate-800">
+                      <span className="font-mono font-bold text-stone-800">
                         Order #{ord.id.slice(-8).toUpperCase()}
                       </span>
-                      <p className="text-[11px] text-slate-400 mt-0.5">
+                      <p className="text-[11px] text-stone-400 mt-0.5">
                         {formatDate(ord.createdAt)} • {ord.subOrders?.length || 0} sub-orders
                       </p>
                     </div>
                     <div className="text-right">
-                      <span className="font-bold text-slate-900 block">
+                      <span className="font-bold text-stone-900 block">
                         {formatPrice(ord.totalAmount)}
                       </span>
                       <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">

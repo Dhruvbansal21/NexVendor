@@ -66,10 +66,10 @@ export const VendorOrdersPage: React.FC = () => {
       <main className="flex-1 p-6 md:p-10 max-w-6xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl font-extrabold text-stone-900 tracking-tight">
               Customer Sub-Orders
             </h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               Fulfill customer purchases. Each sub-order follows strict multi-vendor lifecycle state transitions.
             </p>
           </div>
@@ -78,7 +78,7 @@ export const VendorOrdersPage: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="w-full sm:w-48 px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs text-slate-700 font-medium focus:border-brand-500 outline-hidden"
+            className="w-full sm:w-48 px-3 py-2 bg-white border border-stone-200 rounded-xl text-xs text-stone-700 font-medium focus:border-brand-500 outline-none"
           >
             <option value="">All Sub-Orders</option>
             <option value="pending">Pending</option>
@@ -94,11 +94,11 @@ export const VendorOrdersPage: React.FC = () => {
         {isLoading ? (
           <div className="space-y-4 animate-pulse">
             {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="h-44 bg-white rounded-3xl border border-slate-200" />
+              <div key={i} className="h-44 bg-white rounded-3xl border border-stone-200" />
             ))}
           </div>
         ) : orders.length === 0 ? (
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-12 text-center text-xs text-slate-500">
+          <div className="bg-white rounded-3xl border border-stone-200/80 p-12 text-center text-xs text-stone-500">
             No customer sub-orders found in this category.
           </div>
         ) : (
@@ -106,29 +106,29 @@ export const VendorOrdersPage: React.FC = () => {
             {orders.map((record) => (
               <div
                 key={record.subOrderId}
-                className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm hover:shadow-md transition"
+                className="bg-white rounded-3xl border border-stone-200/80 p-6 shadow-sm hover:shadow-md transition"
               >
                 {/* Header */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 text-xs">
+                <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-stone-100 text-xs">
                   <div className="flex items-center gap-4">
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Sub-Order ID</span>
-                      <span className="font-mono font-bold text-slate-900">
+                      <span className="text-[10px] uppercase font-bold text-stone-400 block">Sub-Order ID</span>
+                      <span className="font-mono font-bold text-stone-900">
                         #{record.subOrderId.slice(-8).toUpperCase()}
                       </span>
                     </div>
 
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Parent Order</span>
-                      <span className="font-mono text-slate-600">
+                      <span className="text-[10px] uppercase font-bold text-stone-400 block">Parent Order</span>
+                      <span className="font-mono text-stone-600">
                         #{record.orderId.slice(-6).toUpperCase()}
                       </span>
                     </div>
 
                     <div>
-                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Date</span>
-                      <span className="font-semibold text-slate-700 flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                      <span className="text-[10px] uppercase font-bold text-stone-400 block">Date</span>
+                      <span className="font-semibold text-stone-700 flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5 text-stone-400" />
                         {formatDate(record.createdAt)}
                       </span>
                     </div>
@@ -142,29 +142,29 @@ export const VendorOrdersPage: React.FC = () => {
                 {/* Items */}
                 <div className="py-4 space-y-2">
                   {record.items.map((item, idx) => (
-                    <div key={idx} className="flex items-center justify-between text-xs bg-slate-50/60 p-2.5 rounded-xl border border-slate-100">
+                    <div key={idx} className="flex items-center justify-between text-xs bg-stone-50/60 p-2.5 rounded-xl border border-stone-100">
                       <div className="flex items-center gap-2.5">
-                        <span className="font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200 text-[11px]">
+                        <span className="font-bold text-stone-500 bg-white px-2 py-0.5 rounded border border-stone-200 text-[11px]">
                           {item.qty}×
                         </span>
-                        <span className="font-semibold text-slate-800">{item.title}</span>
+                        <span className="font-semibold text-stone-800">{item.title}</span>
                       </div>
-                      <span className="font-bold text-slate-900">{formatPrice(item.lineTotal)}</span>
+                      <span className="font-bold text-stone-900">{formatPrice(item.lineTotal)}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Subtotal & Shipping Info */}
-                <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 text-xs">
-                  <div className="flex items-center gap-1.5 text-slate-600">
-                    <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                <div className="pt-3 border-t border-stone-100 flex flex-wrap items-center justify-between gap-4 text-xs">
+                  <div className="flex items-center gap-1.5 text-stone-600">
+                    <MapPin className="w-3.5 h-3.5 text-stone-400" />
                     <span>
                       Deliver to: <strong>{record.shippingAddress.fullName}</strong> ({record.shippingAddress.city}, {record.shippingAddress.state} - {record.shippingAddress.postalCode}) | Phone: {record.shippingAddress.phone}
                     </span>
                   </div>
 
                   <div className="text-right">
-                    <span className="text-xs text-slate-500 block">Subtotal</span>
+                    <span className="text-xs text-stone-500 block">Subtotal</span>
                     <span className="text-sm font-extrabold text-brand-600">
                       {formatPrice(record.subtotal)}
                     </span>
@@ -172,13 +172,13 @@ export const VendorOrdersPage: React.FC = () => {
                 </div>
 
                 {/* State Machine Action Buttons (ONLY VALID TRANSITIONS AS REQUIRED BY SPEC) */}
-                <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-end gap-2 text-xs">
+                <div className="mt-5 pt-4 border-t border-stone-100 flex flex-wrap items-center justify-end gap-2 text-xs">
                   {record.status === 'pending' && (
                     <>
                       <button
                         onClick={() => handleTransition(record.orderId, record.subOrderId, 'confirmed')}
                         disabled={isUpdating}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition active:scale-95"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-sky-600 hover:bg-sky-700 text-white shadow-sm transition active:scale-95"
                       >
                         <CheckCircle className="w-3.5 h-3.5" />
                         <span>Confirm Order</span>
@@ -199,7 +199,7 @@ export const VendorOrdersPage: React.FC = () => {
                       <button
                         onClick={() => handleTransition(record.orderId, record.subOrderId, 'packed')}
                         disabled={isUpdating}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-purple-600 hover:bg-purple-700 text-white shadow-xs transition active:scale-95"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-teal-600 hover:bg-teal-700 text-white shadow-sm transition active:scale-95"
                       >
                         <Package className="w-3.5 h-3.5" />
                         <span>Mark Packed</span>
@@ -219,7 +219,7 @@ export const VendorOrdersPage: React.FC = () => {
                     <button
                       onClick={() => handleTransition(record.orderId, record.subOrderId, 'shipped')}
                       disabled={isUpdating}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition active:scale-95"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-brand-600 hover:bg-brand-700 text-white shadow-sm transition active:scale-95"
                     >
                       <Truck className="w-3.5 h-3.5" />
                       <span>Ship Package</span>
@@ -230,7 +230,7 @@ export const VendorOrdersPage: React.FC = () => {
                     <button
                       onClick={() => handleTransition(record.orderId, record.subOrderId, 'delivered')}
                       disabled={isUpdating}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-95"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition active:scale-95"
                     >
                       <CheckCheck className="w-3.5 h-3.5" />
                       <span>Mark Delivered</span>
@@ -238,7 +238,7 @@ export const VendorOrdersPage: React.FC = () => {
                   )}
 
                   {(record.status === 'delivered' || record.status === 'cancelled') && (
-                    <span className="text-[11px] font-semibold text-slate-400 italic">
+                    <span className="text-[11px] font-semibold text-stone-400 italic">
                       Terminal state: no further transitions allowed.
                     </span>
                   )}

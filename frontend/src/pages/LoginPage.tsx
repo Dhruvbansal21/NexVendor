@@ -41,21 +41,21 @@ export const LoginPage: React.FC = () => {
     }
   };
 
-  const handleQuickFill = (demoEmail: string, roleName: string) => {
-    setEmail(demoEmail);
+  const handleQuickFill = (sampleEmail: string, roleName: string) => {
+    setEmail(sampleEmail);
     setPassword('Demo@12345');
     setErrorMsg(null);
   };
 
   return (
     <div className="min-h-[calc(100vh-16rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white rounded-3xl border border-slate-200/80 p-8 shadow-sm">
+      <div className="max-w-md w-full bg-white rounded-3xl border border-stone-200/80 p-8 shadow-sm">
         <div className="text-center mb-8">
           <div className="w-12 h-12 rounded-2xl bg-brand-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-brand-500/20">
             <ShoppingBag className="w-6 h-6" />
           </div>
-          <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">Sign in to your account</h2>
-          <p className="text-xs text-slate-500 mt-1">Access your marketplace dashboard, orders, or store</p>
+          <h2 className="text-xl font-extrabold text-stone-900 tracking-tight">Sign in to your account</h2>
+          <p className="text-xs text-stone-500 mt-1">Your orders, your store, your shelf — all in one place</p>
         </div>
 
         {errorMsg && (
@@ -67,26 +67,26 @@ export const LoginPage: React.FC = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Email address</label>
+            <label className="block text-xs font-semibold text-stone-700 mb-1">Email address</label>
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="e.g. you@example.com"
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition"
+              className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Password</label>
+            <label className="block text-xs font-semibold text-stone-700 mb-1">Password</label>
             <input
               type="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-hidden transition"
+              className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:bg-white focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 outline-none transition"
             />
           </div>
 
@@ -104,16 +104,16 @@ export const LoginPage: React.FC = () => {
           </button>
         </form>
 
-        {/* Demo Accounts Quick-Fill Pill Buttons */}
-        <div className="mt-8 pt-6 border-t border-slate-100">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 text-center mb-3">
-            Quick Fill Demo Accounts
+        {/* Role quick-fill shortcuts */}
+        <div className="mt-8 pt-6 border-t border-stone-100">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-stone-400 text-center mb-3">
+            Sign in as
           </p>
           <div className="grid grid-cols-3 gap-2">
             <button
               type="button"
               onClick={() => handleQuickFill('customer1@demo.test', 'Customer')}
-              className="px-2.5 py-2 text-[11px] font-semibold rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 transition text-center"
+              className="px-2.5 py-2 text-[11px] font-semibold rounded-lg bg-stone-50 hover:bg-stone-100 border border-stone-200 text-stone-700 transition text-center"
             >
               Customer
             </button>
@@ -127,14 +127,14 @@ export const LoginPage: React.FC = () => {
             <button
               type="button"
               onClick={() => handleQuickFill('admin@demo.test', 'Admin')}
-              className="px-2.5 py-2 text-[11px] font-semibold rounded-lg bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 transition text-center"
+              className="px-2.5 py-2 text-[11px] font-semibold rounded-lg bg-brand-50 hover:bg-brand-100 border border-brand-200 text-brand-700 transition text-center"
             >
               Admin
             </button>
           </div>
         </div>
 
-        <p className="mt-6 text-center text-xs text-slate-500">
+        <p className="mt-6 text-center text-xs text-stone-500">
           Don't have an account?{' '}
           <Link to="/register" className="font-semibold text-brand-600 hover:text-brand-700">
             Create an account

@@ -26,10 +26,10 @@ export const VendorDashboardPage: React.FC = () => {
       <main className="flex-1 p-6 md:p-10 max-w-6xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-2xl font-extrabold text-stone-900 tracking-tight">
               Vendor Dashboard
             </h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               Store performance overview, product inventory, and customer orders
             </p>
           </div>
@@ -74,7 +74,7 @@ export const VendorDashboardPage: React.FC = () => {
             title="Total Products"
             value={dashboard?.totalProducts ?? 0}
             subtitle="In your inventory"
-            color="purple"
+            color="teal"
             icon={<Package className="w-5 h-5" />}
           />
           <StatCard
@@ -94,11 +94,11 @@ export const VendorDashboardPage: React.FC = () => {
         </div>
 
         {/* Recent Orders Preview */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-sm mb-8">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+        <div className="bg-white rounded-3xl border border-stone-200/80 p-6 shadow-sm mb-8">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-stone-100">
             <div>
-              <h2 className="text-sm font-bold text-slate-900">Recent Customer Sub-Orders</h2>
-              <p className="text-xs text-slate-500">Orders containing items from your store</p>
+              <h2 className="text-sm font-bold text-stone-900">Recent Customer Sub-Orders</h2>
+              <p className="text-xs text-stone-500">Orders containing items from your store</p>
             </div>
             <Link
               to="/vendor/orders"
@@ -110,23 +110,23 @@ export const VendorDashboardPage: React.FC = () => {
           </div>
 
           {(!dashboard?.recentOrders || dashboard.recentOrders.length === 0) ? (
-            <div className="text-center py-8 text-xs text-slate-500">
+            <div className="text-center py-8 text-xs text-stone-500">
               No orders received yet. Items purchased by customers will appear here.
             </div>
           ) : (
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-stone-100">
               {dashboard.recentOrders.map((ord) => (
                 <div key={ord.subOrderId} className="py-3 flex items-center justify-between text-xs">
                   <div>
-                    <span className="font-mono font-bold text-slate-800">
+                    <span className="font-mono font-bold text-stone-800">
                       Sub-Order #{ord.subOrderId.slice(-6).toUpperCase()}
                     </span>
-                    <p className="text-[11px] text-slate-400 mt-0.5">
+                    <p className="text-[11px] text-stone-400 mt-0.5">
                       {formatDate(ord.createdAt)}
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="font-bold text-slate-900">
+                    <span className="font-bold text-stone-900">
                       {formatPrice(ord.subtotal)}
                     </span>
                     <StatusBadge status={ord.status} />

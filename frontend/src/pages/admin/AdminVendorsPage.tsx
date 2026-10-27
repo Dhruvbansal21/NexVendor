@@ -75,22 +75,22 @@ export const AdminVendorsPage: React.FC = () => {
 
       <main className="flex-1 p-6 md:p-10 max-w-6xl">
         <div className="mb-8">
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl font-extrabold text-stone-900 tracking-tight">
             Vendor Store Approvals
           </h1>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className="text-xs text-stone-500 mt-1">
             Review onboarding applications, inspect private KYC documents, and approve or reject vendor stores
           </p>
         </div>
 
         {/* Status Tabs */}
-        <div className="flex items-center gap-2 border-b border-slate-200/80 mb-6">
+        <div className="flex items-center gap-2 border-b border-stone-200/80 mb-6">
           <button
             onClick={() => { setActiveTab('pending'); setPage(1); }}
             className={`px-4 py-2 text-xs font-bold border-b-2 transition -mb-px flex items-center gap-2 ${
               activeTab === 'pending'
-                ? 'border-indigo-600 text-indigo-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-brand-600 text-brand-600'
+                : 'border-transparent text-stone-500 hover:text-stone-800'
             }`}
           >
             <span>Pending Approvals</span>
@@ -100,8 +100,8 @@ export const AdminVendorsPage: React.FC = () => {
             onClick={() => { setActiveTab('verified'); setPage(1); }}
             className={`px-4 py-2 text-xs font-bold border-b-2 transition -mb-px ${
               activeTab === 'verified'
-                ? 'border-indigo-600 text-indigo-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-brand-600 text-brand-600'
+                : 'border-transparent text-stone-500 hover:text-stone-800'
             }`}
           >
             Verified Stores
@@ -111,8 +111,8 @@ export const AdminVendorsPage: React.FC = () => {
             onClick={() => { setActiveTab('rejected'); setPage(1); }}
             className={`px-4 py-2 text-xs font-bold border-b-2 transition -mb-px ${
               activeTab === 'rejected'
-                ? 'border-indigo-600 text-indigo-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-brand-600 text-brand-600'
+                : 'border-transparent text-stone-500 hover:text-stone-800'
             }`}
           >
             Rejected Applications
@@ -122,8 +122,8 @@ export const AdminVendorsPage: React.FC = () => {
             onClick={() => { setActiveTab(''); setPage(1); }}
             className={`px-4 py-2 text-xs font-bold border-b-2 transition -mb-px ${
               activeTab === ''
-                ? 'border-indigo-600 text-indigo-600'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'border-brand-600 text-brand-600'
+                : 'border-transparent text-stone-500 hover:text-stone-800'
             }`}
           >
             All Vendors
@@ -131,11 +131,11 @@ export const AdminVendorsPage: React.FC = () => {
         </div>
 
         {/* Vendors Table */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-sm">
+        <div className="bg-white rounded-3xl border border-stone-200/80 overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200/80 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                <tr className="bg-stone-50 border-b border-stone-200/80 text-[11px] font-bold text-stone-500 uppercase tracking-wider">
                   <th className="py-3.5 px-4">Store & Slug</th>
                   <th className="py-3.5 px-4">Contact Details</th>
                   <th className="py-3.5 px-4">KYC Documents</th>
@@ -144,35 +144,35 @@ export const AdminVendorsPage: React.FC = () => {
                   <th className="py-3.5 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
+              <tbody className="divide-y divide-stone-100 font-medium text-stone-700">
                 {isLoading ? (
                   <tr>
-                    <td colSpan={6} className="py-12 text-center text-slate-400">Loading vendors...</td>
+                    <td colSpan={6} className="py-12 text-center text-stone-400">Loading vendors...</td>
                   </tr>
                 ) : vendors.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="py-12 text-center text-slate-400">
+                    <td colSpan={6} className="py-12 text-center text-stone-400">
                       No vendors found under this filter.
                     </td>
                   </tr>
                 ) : (
                   vendors.map((v) => (
-                    <tr key={v.id} className="hover:bg-slate-50/60 transition">
+                    <tr key={v.id} className="hover:bg-stone-50/60 transition">
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs">
+                          <div className="w-8 h-8 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xs">
                             <Building2 className="w-4 h-4" />
                           </div>
                           <div>
-                            <span className="font-bold text-slate-900 block">{v.storeName}</span>
-                            <span className="text-[10px] text-slate-400 font-mono">/{v.slug}</span>
+                            <span className="font-bold text-stone-900 block">{v.storeName}</span>
+                            <span className="text-[10px] text-stone-400 font-mono">/{v.slug}</span>
                           </div>
                         </div>
                       </td>
 
                       <td className="py-3 px-4">
-                        <p className="font-semibold text-slate-800">{v.contactEmail}</p>
-                        <p className="text-[11px] text-slate-500">{v.contactPhone}</p>
+                        <p className="font-semibold text-stone-800">{v.contactEmail}</p>
+                        <p className="text-[11px] text-stone-500">{v.contactPhone}</p>
                       </td>
 
                       <td className="py-3 px-4">
@@ -197,7 +197,7 @@ export const AdminVendorsPage: React.FC = () => {
                                     })
                                     .catch(() => alert('Failed to open private KYC file'));
                                 }}
-                                className="inline-flex items-center gap-1.5 text-indigo-600 hover:text-indigo-800 text-[11px] font-semibold bg-indigo-50 px-2.5 py-1 rounded-md"
+                                className="inline-flex items-center gap-1.5 text-brand-600 hover:text-brand-800 text-[11px] font-semibold bg-brand-50 px-2.5 py-1 rounded-md"
                               >
                                 <FileText className="w-3.5 h-3.5" />
                                 <span className="truncate max-w-[120px]">{doc.originalName}</span>
@@ -205,7 +205,7 @@ export const AdminVendorsPage: React.FC = () => {
                             ))}
                           </div>
                         ) : (
-                          <span className="text-slate-400 text-[11px]">No docs attached</span>
+                          <span className="text-stone-400 text-[11px]">No docs attached</span>
                         )}
                       </td>
 
@@ -218,7 +218,7 @@ export const AdminVendorsPage: React.FC = () => {
                         )}
                       </td>
 
-                      <td className="py-3 px-4 text-slate-500 text-[11px]">
+                      <td className="py-3 px-4 text-stone-500 text-[11px]">
                         {formatDate(v.createdAt)}
                       </td>
 
@@ -275,14 +275,14 @@ export const AdminVendorsPage: React.FC = () => {
           onCancel={() => setRejectTarget(null)}
         >
           <div className="mt-2 text-xs">
-            <label className="block font-semibold text-slate-700 mb-1">Rejection Reason *</label>
+            <label className="block font-semibold text-stone-700 mb-1">Rejection Reason *</label>
             <textarea
               rows={3}
               required
               value={rejectReason}
               onChange={(e) => setRejectReason(e.target.value)}
               placeholder="e.g. KYC document signature is unclear / missing GST registration number"
-              className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl outline-hidden focus:bg-white focus:border-rose-500"
+              className="w-full px-3 py-2 bg-stone-50 border border-stone-200 rounded-xl outline-none focus:bg-white focus:border-rose-500"
             />
           </div>
         </ConfirmDialog>

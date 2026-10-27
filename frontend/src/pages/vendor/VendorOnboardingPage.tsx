@@ -57,25 +57,25 @@ export const VendorOnboardingPage: React.FC = () => {
 
       <main className="flex-1 p-6 md:p-10 max-w-4xl">
         <div className="mb-8">
-          <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-2xl font-extrabold text-stone-900 tracking-tight">
             Vendor Store & KYC Verification
           </h1>
-          <p className="text-xs text-slate-500 mt-1">
+          <p className="text-xs text-stone-500 mt-1">
             Submit store credentials and business verification documents to sell on the marketplace
           </p>
         </div>
 
         {/* Existing Vendor Status Banner */}
         {vendor && (
-          <div className="mb-8 p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm space-y-4">
+          <div className="mb-8 p-6 rounded-3xl bg-white border border-stone-200/80 shadow-sm space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center">
                   <Store className="w-5 h-5" />
                 </div>
                 <div>
-                  <h2 className="text-sm font-bold text-slate-900">{vendor.storeName}</h2>
-                  <p className="text-xs text-slate-500">Slug: /{vendor.slug}</p>
+                  <h2 className="text-sm font-bold text-stone-900">{vendor.storeName}</h2>
+                  <p className="text-xs text-stone-500">Slug: /{vendor.slug}</p>
                 </div>
               </div>
               <StatusBadge status={vendor.status} />
@@ -87,7 +87,7 @@ export const VendorOnboardingPage: React.FC = () => {
                 <div>
                   <strong className="font-bold block">Application Under Review</strong>
                   <p className="mt-0.5 text-amber-800 leading-relaxed">
-                    Your KYC documents are currently being evaluated by marketplace administrators. You can create draft products, but they will not be published in the public catalogue until your store is verified.
+                    Our team is reviewing your documents now. You can keep drafting products in the meantime — they go live on the public shelves as soon as your store is verified.
                   </p>
                 </div>
               </div>
@@ -120,18 +120,18 @@ export const VendorOnboardingPage: React.FC = () => {
               </div>
             )}
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100 text-xs">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-stone-100 text-xs">
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 block">Contact Email</span>
-                <span className="font-semibold text-slate-800">{vendor.contactEmail}</span>
+                <span className="text-[10px] uppercase font-bold text-stone-400 block">Contact Email</span>
+                <span className="font-semibold text-stone-800">{vendor.contactEmail}</span>
               </div>
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 block">Contact Phone</span>
-                <span className="font-semibold text-slate-800">{vendor.contactPhone}</span>
+                <span className="text-[10px] uppercase font-bold text-stone-400 block">Contact Phone</span>
+                <span className="font-semibold text-stone-800">{vendor.contactPhone}</span>
               </div>
               <div>
-                <span className="text-[10px] uppercase font-bold text-slate-400 block">Platform Commission</span>
-                <span className="font-semibold text-slate-800">{vendor.commissionPct || 10}%</span>
+                <span className="text-[10px] uppercase font-bold text-stone-400 block">Platform Commission</span>
+                <span className="font-semibold text-stone-800">{vendor.commissionPct || 10}%</span>
               </div>
             </div>
           </div>
@@ -139,8 +139,8 @@ export const VendorOnboardingPage: React.FC = () => {
 
         {/* Onboarding / Re-apply Form */}
         {(!vendor || vendor.status === 'rejected') && (
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-8 shadow-sm">
-            <h2 className="text-base font-extrabold text-slate-900 mb-6 pb-3 border-b border-slate-100">
+          <div className="bg-white rounded-3xl border border-stone-200/80 p-8 shadow-sm">
+            <h2 className="text-base font-extrabold text-stone-900 mb-6 pb-3 border-b border-stone-100">
               {vendor?.status === 'rejected' ? 'Re-Apply for Store Verification' : 'Store Registration Form'}
             </h2>
 
@@ -153,60 +153,60 @@ export const VendorOnboardingPage: React.FC = () => {
 
             <form onSubmit={handleSubmit} className="space-y-5 text-xs">
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Store Name *</label>
+                <label className="block font-semibold text-stone-700 mb-1">Store Name *</label>
                 <input
                   type="text"
                   required
                   value={storeName}
                   onChange={(e) => setStoreName(e.target.value)}
                   placeholder="e.g. Heritage Handicrafts"
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-brand-500 outline-hidden"
+                  className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:border-brand-500 outline-none"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">Store Description</label>
+                <label className="block font-semibold text-stone-700 mb-1">Store Description</label>
                 <textarea
                   rows={3}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Tell buyers about your craftsmanship, products, and brand story..."
-                  className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-brand-500 outline-hidden"
+                  className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:border-brand-500 outline-none"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Contact Email *</label>
+                  <label className="block font-semibold text-stone-700 mb-1">Contact Email *</label>
                   <input
                     type="email"
                     required
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
                     placeholder="store@business.com"
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-brand-500 outline-hidden"
+                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:border-brand-500 outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Contact Phone *</label>
+                  <label className="block font-semibold text-stone-700 mb-1">Contact Phone *</label>
                   <input
                     type="tel"
                     required
                     value={contactPhone}
                     onChange={(e) => setContactPhone(e.target.value)}
                     placeholder="+91 98765 43210"
-                    className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:border-brand-500 outline-hidden"
+                    className="w-full px-3.5 py-2.5 bg-stone-50 border border-stone-200 rounded-xl focus:bg-white focus:border-brand-500 outline-none"
                   />
                 </div>
               </div>
 
               {/* Private KYC Document Upload */}
               <div>
-                <label className="block font-semibold text-slate-700 mb-1">
+                <label className="block font-semibold text-stone-700 mb-1">
                   KYC Verification Document (PDF, JPG, PNG)
                 </label>
-                <div className="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center hover:bg-slate-50 transition cursor-pointer relative">
+                <div className="border-2 border-dashed border-stone-200 rounded-2xl p-6 text-center hover:bg-stone-50 transition cursor-pointer relative">
                   <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png"
@@ -214,11 +214,11 @@ export const VendorOnboardingPage: React.FC = () => {
                     className="absolute inset-0 opacity-0 cursor-pointer"
                   />
                   <div className="flex flex-col items-center">
-                    <UploadCloud className="w-8 h-8 text-slate-400 mb-2" />
-                    <p className="text-xs font-semibold text-slate-700">
+                    <UploadCloud className="w-8 h-8 text-stone-400 mb-2" />
+                    <p className="text-xs font-semibold text-stone-700">
                       {file ? file.name : 'Click to upload business license / GST document'}
                     </p>
-                    <p className="text-[11px] text-slate-400 mt-1">
+                    <p className="text-[11px] text-stone-400 mt-1">
                       {file ? `${(file.size / 1024).toFixed(1)} KB` : 'Maximum file size 5MB (stored securely outside public web paths)'}
                     </p>
                   </div>

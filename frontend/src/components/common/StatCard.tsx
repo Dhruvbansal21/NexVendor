@@ -9,7 +9,7 @@ interface StatCardProps {
     value: string;
     positive: boolean;
   };
-  color?: 'brand' | 'emerald' | 'amber' | 'blue' | 'purple';
+  color?: 'brand' | 'emerald' | 'amber' | 'sky' | 'teal';
 }
 
 export const StatCard: React.FC<StatCardProps> = ({
@@ -24,14 +24,14 @@ export const StatCard: React.FC<StatCardProps> = ({
     brand: 'bg-brand-50 text-brand-600',
     emerald: 'bg-emerald-50 text-emerald-600',
     amber: 'bg-amber-50 text-amber-600',
-    blue: 'bg-blue-50 text-blue-600',
-    purple: 'bg-purple-50 text-purple-600'
+    sky: 'bg-sky-50 text-sky-600',
+    teal: 'bg-teal-50 text-teal-600'
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200/80 p-5 shadow-sm card-hover">
+    <div className="bg-white rounded-xl border border-stone-200/80 p-5 shadow-sm card-hover">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">{title}</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">{title}</p>
         {icon && (
           <div className={`p-2.5 rounded-lg ${colorMap[color]}`}>
             {icon}
@@ -39,7 +39,7 @@ export const StatCard: React.FC<StatCardProps> = ({
         )}
       </div>
       <div className="mt-3 flex items-baseline gap-2">
-        <h3 className="text-2xl font-bold text-slate-900 tracking-tight">{value}</h3>
+        <h3 className="text-2xl font-bold text-stone-900 tracking-tight">{value}</h3>
         {trend && (
           <span
             className={`text-xs font-semibold ${
@@ -50,7 +50,7 @@ export const StatCard: React.FC<StatCardProps> = ({
           </span>
         )}
       </div>
-      {subtitle && <p className="mt-1 text-xs text-slate-500">{subtitle}</p>}
+      {subtitle && <p className="mt-1 text-xs text-stone-500">{subtitle}</p>}
     </div>
   );
 };
